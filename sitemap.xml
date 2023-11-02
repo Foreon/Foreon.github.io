@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/music/index.html</loc>
+    <loc>https://foreon.github.io/posts/51727.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/movies/index.html</loc>
+    <loc>https://foreon.github.io/music/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/messageboard/index.html</loc>
+    <loc>https://foreon.github.io/movies/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/gallery/index.html</loc>
+    <loc>https://foreon.github.io/messageboard/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://foreon.github.io/gallery/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/link/index.html</loc>
+    <loc>https://foreon.github.io/about/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/posts/51727.html</loc>
+    <loc>https://foreon.github.io/link/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://foreon.github.io/categories/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/myself/index.html</loc>
+    <loc>https://foreon.github.io/myself/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/timeline/index.html</loc>
+    <loc>https://foreon.github.io/timeline/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/index-1.html</loc>
+    <loc>https://foreon.github.io/categories/index-1.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>https://foreon.github.io/tags/index.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -110,16 +110,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/index-1.html</loc>
-    
-    <lastmod>2023-11-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/posts/16107.html</loc>
+    <loc>https://foreon.github.io/tags/index-1.html</loc>
     
     <lastmod>2023-11-02</lastmod>
     
@@ -129,7 +120,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://foreon.github.io/</loc>
     <lastmod>2023-11-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -137,7 +128,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/hello/</loc>
+    <loc>https://foreon.github.io/tags/%E6%89%93%E6%8B%9B%E5%91%BC/</loc>
     <lastmod>2023-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -146,7 +137,7 @@
 
   
   <url>
-    <loc>http://example.com/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://foreon.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2023-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
