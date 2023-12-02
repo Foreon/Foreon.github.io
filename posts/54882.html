@@ -1,0 +1,456 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>安装Arch Linux的记录 | Leon's blog😽</title><meta name="author" content="Leon"><meta name="copyright" content="Leon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="安装Arch Linux的记录第一次安装双系统，虽然是参考b站教程的，但还是很有成就感，故记录一下这个过程，顺便仔细学习一下各个命令的作用。 本文仅为学习记录，文末给出了参考来源，若有侵权请联系我删除🙏 安装过程准备工作 首先登录官网从国内镜像源下载arch linux系统镜像 下载rufus烧录arch linux镜像到U盘，默认设置就行    为arch linux分配磁盘空间，大概20G就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装Arch Linux的记录">
+<meta property="og:url" content="https://foreon.github.io/posts/54882.html">
+<meta property="og:site_name" content="Leon&#39;s blog😽">
+<meta property="og:description" content="安装Arch Linux的记录第一次安装双系统，虽然是参考b站教程的，但还是很有成就感，故记录一下这个过程，顺便仔细学习一下各个命令的作用。 本文仅为学习记录，文末给出了参考来源，若有侵权请联系我删除🙏 安装过程准备工作 首先登录官网从国内镜像源下载arch linux系统镜像 下载rufus烧录arch linux镜像到U盘，默认设置就行    为arch linux分配磁盘空间，大概20G就">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bu.dusays.com/2023/12/03/656b72718aa0a.jpg">
+<meta property="article:published_time" content="2023-12-02T18:03:57.000Z">
+<meta property="article:modified_time" content="2023-12-02T18:15:11.710Z">
+<meta property="article:author" content="Leon">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bu.dusays.com/2023/12/03/656b72718aa0a.jpg"><link rel="shortcut icon" href="https://bu.dusays.com/2023/11/03/654511df35ab1.jpg"><link rel="canonical" href="https://foreon.github.io/posts/54882.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '安装Arch Linux的记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-03 02:15:11'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Leon's blog😽" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/11/03/6545103c2e116.jpg" onerror="onerror=null;src='https://bu.dusays.com/2023/11/03/65450afd63db3.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://bu.dusays.com/2023/12/03/656b72718aa0a.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Leon's blog😽"><span class="site-name">Leon's blog😽</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">安装Arch Linux的记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-02T18:03:57.000Z" title="发表于 2023-12-03 02:03:57">2023-12-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-02T18:15:11.710Z" title="更新于 2023-12-03 02:15:11">2023-12-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Learningr-ecord/">Learningr ecord</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="安装Arch Linux的记录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="安装Arch-Linux的记录"><a href="#安装Arch-Linux的记录" class="headerlink" title="安装Arch Linux的记录"></a>安装Arch Linux的记录</h1><p>第一次安装双系统，虽然是参考b站教程的，但还是很有成就感，故记录一下这个过程，顺便仔细学习一下各个命令的作用。</p>
+<p>本文仅为学习记录，文末给出了参考来源，若有侵权请联系我删除🙏</p>
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>首先登录官网从国内镜像源下载arch linux系统镜像</li>
+<li>下载rufus烧录arch linux镜像到U盘，默认设置就行</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b709c2e8c6.png" alt="image-20231202223105417"></p>
+<ol start="3">
+<li>为arch linux分配磁盘空间，大概20G就够用</li>
+</ol>
+<p>​       我这里能压缩的磁盘空间很少，但这个盘还剩很多空间，于是我使用了傲梅分区助手</p>
+<h3 id="设置网络"><a href="#设置网络" class="headerlink" title="设置网络"></a>设置网络</h3><p>重启进入bios,设置为从u盘启动，开始安装arch linux</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b709d4c47d.png" alt="image-20231202224005368"></p>
+<p><code>rfkill list</code>查看列表</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b709e6785e.png" alt="image-20231202223727234"></p>
+<p><code>rfkill unblock wifi</code>解除wifi锁定</p>
+<p><code>ip link</code>查看网卡，一般网卡名为wlan0</p>
+<p><code>ip link set wlan0 up</code>启用网卡</p>
+<blockquote>
+<p>ip link set DEVICE  { up | down | arp { on | off } | name NEWNAME | address LLADDR }<br>选项说明：<br>dev DEVICE：指定要操作的设备名<br>up and down：启动或停用该设备<br>arp on or arp off：启用或禁用该设备的arp协议<br>name NAME：修改指定设备的名称，建议不要在该接口处于运行状态或已分配IP地址时重命名<br>address LLADDRESS：设置指定接口的MAC地址</p>
+</blockquote>
+<p>连接wifi </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">iwctl   <span class="comment">//在 Linux 中，&quot;ctl&quot; 通常代表 &quot;control&quot; 或 &quot;controller&quot;。例如，在 SysV 初始化系统中，/etc/init.d 目录下的脚本通常以 &quot;ctl&quot; 作为后缀，表示它们是用于控制系统服务的控制器。此外，在某些驱动程序中，CTL 可能代表 &quot;control&quot;，表示该驱动程序控制某个设备的操作。</span></span><br><span class="line">station wlan0 scan</span><br><span class="line">    </span><br><span class="line">station wlan0 get-networks</span><br><span class="line">    </span><br><span class="line">station wlan0 connect [wifi名字] <span class="comment">//这里有个小技巧，如果遇到中文乱码，可以打出前面的非中文字符，再按下Tab匹配</span></span><br><span class="line"><span class="comment">//接着输入密码</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">    </span><br><span class="line">ping baidu.com   <span class="comment">//检查网络是否正常</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b709fb81ee.png" alt="image-20231202224913623"></p>
+<h3 id="设置时间同步"><a href="#设置时间同步" class="headerlink" title="设置时间同步"></a>设置时间同步</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timedatectl <span class="built_in">set</span>-ntp <span class="literal">true</span> <span class="comment">//开启ntp时间同步</span></span><br><span class="line">    </span><br><span class="line">timedatectl status</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70a0eddb4.png" alt="image-20231202225330770"></p>
+<h3 id="分配磁盘空间"><a href="#分配磁盘空间" class="headerlink" title="分配磁盘空间"></a>分配磁盘空间</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l  <span class="comment">//查看磁盘状态</span></span><br><span class="line">    </span><br><span class="line">fdisk /dev/nvme...n.... <span class="comment">//nvme...n....  由图为刚刚为arch linux分配空间的磁盘</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70a1e1af0.png" alt="image-20231202225956849">      <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/12/03/656b70a3547a5.png" alt="image-20231202225904146" style="zoom:150%;" /></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//p 查看布局</span></span><br><span class="line"><span class="comment">//n 新建分区</span></span><br><span class="line">n</span><br><span class="line"><span class="number">7</span>  <span class="comment">//这里给出为linux的交换分区给出空间的磁盘的序号</span></span><br><span class="line">+<span class="number">4</span>G <span class="comment">//这里建立linux的交换分区，大小为4GB</span></span><br><span class="line">n</span><br><span class="line"><span class="comment">//直接回车表示把剩余默认空间都给linux的根分区</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70a468a2f.png" alt="image-20231202231143106"></p>
+<blockquote>
+<p>UEFI是指主板的引导启动方式</p>
+<p>GPT是硬盘的分区模式</p>
+<p>EFI是GPT硬盘分区模式中的系统启动分区</p>
+<p>EFI分区全称是EFI system partition，一般简写成EFI分区或者ESP分区</p>
+</blockquote>
+<p><strong>EFI分区是用来引导系统启动的</strong></p>
+<p>分配好的空间如图</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70a5d0950.png" alt="image-20231202231551277"></p>
+<h3 id="分区格式化"><a href="#分区格式化" class="headerlink" title="分区格式化"></a>分区格式化</h3><blockquote>
+<p>创建好的分区必须格式化为一种文件系统，Linux 上常见的文件系统有 ext4，btrfs，xfs 等。建议第一次安装的读者使用 ext4 文件系统。btrfs 提供子卷、写时复制、压缩、快照等高级功能，适合更加熟练的用户。</p>
+</blockquote>
+<p>mkfs命令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70a6c1bbf.png" alt="image-20231202231817070"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkfs.btrfs /dev/nvme...n..<span class="number">.1</span>  <span class="comment">//将根目录分区格式化为btrfs文件系统</span></span><br><span class="line">    </span><br><span class="line">mkswap /dev/nvme...n..<span class="number">.2</span> <span class="comment">//对交换分区进行操作，mkswap命令用于在一个文件或者设备上建立交换分区。在建立完之后要使用sawpon命令开始使用这个交换区。最后一个选择性参数指定了交换区的大小，但是这个参数是为了向后兼容设置的，没有使用的必要，一般都将整个文件或者设备作为交换区。</span></span><br><span class="line">swapon /dev/nvme...n..<span class="number">.2</span>  </span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70a7c239e.png" alt="image-20231202232822725"></p>
+<h3 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h3><blockquote>
+<p>mount命令的功能是将文件系统挂载到目录</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br><span class="line">    </span><br><span class="line">mount /dev/nvme1n.... /mnt <span class="comment">//将根分区挂载</span></span><br><span class="line">    </span><br><span class="line">mkdir /mnt/boot <span class="comment">//根目录下生成文件夹boot</span></span><br><span class="line">    </span><br><span class="line">mount dev/nvme0n.... /mnt/boot <span class="comment">//将引导分区挂载到/mnt/boot下</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//mnt - 此目录主要是作为挂载点使用。通常包括系统引导后被挂载的文件系统的挂载点。如挂载Windows下的某个分区。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><em><strong>最终的布局</strong></em></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70a8ebac8.png"></p>
+<p>从上到下分别是 <em><strong>引导分区、根分区、交换分区</strong></em></p>
+<blockquote>
+<p>Linux分区和挂载是Linux系统管理硬盘的两个重要概念。分区是将硬盘划分为不同的逻辑区域，以便存储不同类型的数据和文件。挂载是将一个分区与一个目录联系起来，使得该目录可以访问该分区中的数据和文件。<br>linux为什么要挂载？ 如果硬盘是一片空地，那么分区和挂载就是把一片空地建成不同的房间（分区），每个房间存放不同类型的货物，再把房间的钥匙发给使用这个房间里的货物的人（挂载）。如果不挂载，那么人要使用某个货物时，就会因为没有钥匙而无法使用这个货物。<br>为什么不直接访问&#x2F;dev目录？ 直接访问&#x2F;dev目录，就相当于把房间都拆了，直接从空地上寻找需要的货物，这不方便，也不安全（空地货物可能会被弄乱）<br>Linux分区和挂载有以下几个用途：<br>提高系统的安全性。没有挂载的分区是无法访问的，这样可以防止恶意用户或程序对系统造成破坏。<br>提高系统的效率。通过合理地划分和挂载分区，可以减少系统维护文件的规模，提高磁盘空间的利用率和读写速度。<br>适应多用户操作系统。Linux是一个多用户操作系统，不同用户可能有不同的权限和需求。通过分区和挂载，可以实现对用户空间、临时文件、日志文件等的隔离和管理。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70aa9470c.jpeg" alt="img"></p>
+<h3 id="选择软件镜像源"><a href="#选择软件镜像源" class="headerlink" title="选择软件镜像源"></a>选择软件镜像源</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pacman.d/mirrorlist <span class="comment">//手动添加镜像</span></span><br><span class="line">    </span><br><span class="line">Server =https:<span class="comment">//mirrors.ustc.edu.cn/archlinux/$repo/os/$arch</span></span><br><span class="line">Server =......</span><br><span class="line"><span class="comment">//ctrl+x保存退出</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70ac2437e.png" alt="image-20231202235356804"></p>
+<blockquote>
+<p>在 Arch Linux 中，软件仓库就好比手机中的应用商店，软件包是通过软件仓库进行分发的。软件仓库镜像是软件仓库的复制品，同一个软件仓库可以在世界各地建立软件仓库镜像，以便于不同地区的用户下载。因此选择一个合适的软件仓库镜像对于您更新软件包数据库以及下载软件包的速度有很大影响。</p>
+</blockquote>
+<p>pacman命令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70ad3a55b.png" alt="image-20231202235029820"></p>
+<p>nano编辑器</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70ae23968.png" alt="image-20231202234934124">、</p>
+<h3 id="安装基础包"><a href="#安装基础包" class="headerlink" title="安装基础包"></a>安装基础包</h3><blockquote>
+<p>我们使用 pacstrap 安装 base，linux，linux-firmware 三个软件包，它们分别是基础包组，linux 内核和驱动程序。此外，如果您使用 2019 年及以后生产的笔记本电脑，可能需要安装 sof-firmware，否则可能没有声音[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/596227524#ref_23">23]</a>。</p>
+<p>Arch linux 官方提供了 linux，linux-lts，linux-zen，linux-hardened 内核[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/596227524#ref_24">24]</a>，但是对于初学者，只推荐使用 linux 内核。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacstrap -K /mnt base base-devel linux linux-firmware sudo nano vim networkmanager intel-ucode</span><br><span class="line"><span class="comment">//安装base,base-devel,linux,linux-firmware,sudo,nano,vim,networkmanager,intel-ucode</span></span><br><span class="line"><span class="comment">//intel-ucode是CPU微码，用于intel的cpu固件更新？？？这里我不确定(</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70af5cf73.png" alt="image-20231202235643268"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy archlinux-keyring <span class="comment">//如若报错则需更新keyring</span></span><br><span class="line">    </span><br><span class="line">pacstrap -K /mnt base base-devel linux linux-firmware sudo nano vim networkmanager intel-ucode <span class="comment">//然后重新安装</span></span><br></pre></td></tr></table></figure>
+
+<p>fstab是一个系统文件，决定了系统启动时如何自动挂载分区。没有 fstab，系统将找不到根分区，从而无法启动。fstab 有一定的格式，我们用一个例子说明 fstab 文件的格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U/mnt &gt;&gt; /mnt/ect/fstab  </span><br></pre></td></tr></table></figure>
+
+<p>其中“genfstab -U &#x2F;mnt”是以 UUID 的描述方式生成 fstab，“&gt;&gt;” 的意思是，将输出结果附加在后面的文件之后。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70b02dfd4.png" alt="image-20231203000926638"></p>
+<p>生成完成后，记得使用 cat 命令打印文件内容，仔细检查一遍。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用chroot"><a href="#使用chroot" class="headerlink" title="使用chroot"></a>使用chroot</h3><p>使用chroot切换到安装的新系统</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
+
+<p>这里我顿悟了，之前的根目录在&#x2F;mnt下，这里chroot直接把根目录移动回系统&#x2F;下，&#x2F;mnt相当于完成汉诺塔的倒数第二步</p>
+<p>chroot命令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70b1432ba.png" alt="image-20231203001312188"></p>
+<h3 id="设置时区"><a href="#设置时区" class="headerlink" title="设置时区"></a>设置时区</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="comment">//设置上海时间</span></span><br><span class="line">    </span><br><span class="line">hwclock --systohc <span class="comment">//设置硬件时间</span></span><br></pre></td></tr></table></figure>
+
+<p>ln命令   </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70b259d6d.png" alt="image-20231203001502785"></p>
+<p>hwclock命令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70b39a481.png" alt="image-20231203001608909"></p>
+<h3 id="本地化"><a href="#本地化" class="headerlink" title="本地化"></a>本地化</h3><blockquote>
+<p>我们将设置 locale、终端键盘布局和字体。locale 决定了系统的语言和格式，包括终端显示哪种语言，数字、时间和货币以哪国的格式显示等等。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/locale.gen</span><br><span class="line"><span class="comment">//取消en_US.UTF-8 和zh_CN.UTF-8前的注释</span></span><br><span class="line">locale-gen <span class="comment">//生成locale</span></span><br></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70b4a7751.png" alt="image-20231203004524408" style="zoom: 200%;" />
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70b5ab949.png" alt="image-20231203004557543"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/locale.conf <span class="comment">//修改locale.conf文件</span></span><br><span class="line"><span class="comment">//输入LANG=en_US.UTF-8，ctrl+x保存</span></span><br></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70b67a922.png" alt="image-20231203004942416" style="zoom:200%;" />
+
+<h3 id="确定系统名和网络管理系统配置"><a href="#确定系统名和网络管理系统配置" class="headerlink" title="确定系统名和网络管理系统配置"></a>确定系统名和网络管理系统配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/hostname</span><br><span class="line">//输入archlinux，确定系统名</span><br><span class="line">systemctl enable NetworkManager//注意大小写</span><br><span class="line">//使用 systemd 设置 NetworkManager 开机自动启动</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置root密码"><a href="#设置root密码" class="headerlink" title="设置root密码"></a>设置root密码</h3><blockquote>
+<p>root 用户是 Linux 系统中权限最高的用户，有些敏感的操作必须通过 root 用户进行，比如使用 pacman。我们之前进行所有的操作也都是以 root 用户进行的。也正是因为 root 的权限过高，如果使用不当会造成安全问题，所以我们在下一篇文章中会新建一个普通用户来进行日常的操作。在这里我们需要为 root 用户设置一个密码。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br><span class="line"><span class="comment">//输入密码，这里不会显示已经输入的密码</span></span><br><span class="line"><span class="comment">//再次输入密码</span></span><br></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70b77dbc6.png" alt="image-20231203005458592" style="zoom:200%;" />
+
+<h3 id="新建普通用户"><a href="#新建普通用户" class="headerlink" title="新建普通用户"></a>新建普通用户</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd -m -G wheel -s /bin/bash [username] <span class="comment">//将用户添加到wheel组，root也在wheel组</span></span><br><span class="line">    </span><br><span class="line">passwd [username]</span><br><span class="line"><span class="comment">//输入密码并重复输入确定</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70b863b2a.png" alt="image-20231203005911850"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">visudo <span class="comment">//打开/etc/sudoers文件进行编辑设置sudo</span></span><br><span class="line"><span class="comment">//这里使用传统vim编辑器，按i进入编辑模式，按esc退出编辑模式，输入:wq退出保存</span></span><br><span class="line"><span class="comment">//取消%wheel ALL前的注释</span></span><br></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70b980409.png" alt="image-20231203010135452" style="zoom:200%;" />
+
+<p>这里的意思是让wheel组下的所有用户都能免去输入密码使用sudo权限</p>
+<p>sudo权限</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70ba68548.png" alt="image-20231203010514566"></p>
+<h3 id="Grub安装"><a href="#Grub安装" class="headerlink" title="Grub安装"></a>Grub安装</h3><blockquote>
+<h2 id="GRUB-是什么？"><a href="#GRUB-是什么？" class="headerlink" title="GRUB 是什么？"></a>GRUB 是什么？</h2><p><a href="https://link.zhihu.com/?target=https://www.gnu.org/software/grub/">GRUB</a> 是一个用于加载和管理系统启动的完整程序。它是 Linux 发行版中最常见的*引导程序(bootloader)*。引导程序是计算机启动时运行的第一个软件。它加载 <a href="https://link.zhihu.com/?target=https://itsfoss.com/what-is-linux/">操作系统的内核</a>，然后再由内核初始化操作系统的其他部分（包括 Shell、<a href="https://link.zhihu.com/?target=https://linux.cn/article-12773-1.html">显示管理器</a>、<a href="https://link.zhihu.com/?target=https://linux.cn/article-12579-1.html">桌面环境</a> 等等）。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr os-prober <span class="comment">//安装系统探测器</span></span><br><span class="line">    </span><br><span class="line">nano /etc/<span class="keyword">default</span>/grub</span><br></pre></td></tr></table></figure>
+
+<p><strong>新版grub默认禁用os-prober,需要手动启用</strong></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70bb87859.png" alt="image-20231203011100286" style="zoom:200%;" />
+
+<p>去掉GRUB_DISABLE前面的注释</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB <span class="comment">//安装Grub</span></span><br><span class="line">    </span><br><span class="line">grub-mkconfig -o /boot/grub/grub.cfg <span class="comment">//生成Grub配置</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="手动添加Windows启动项"><a href="#手动添加Windows启动项" class="headerlink" title="手动添加Windows启动项"></a>手动添加Windows启动项</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blkid /dev/nvme0n......  <span class="comment">//查看引导分区信息</span></span><br></pre></td></tr></table></figure>
+
+<p>blkid命令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70bc6a924.png" alt="image-20231203011827063">记录下UUID后面的数字</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70bd59e1a.png" alt="image-20231203011909438" style="zoom:200%;" />
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano/boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+
+<p>有概率os-prober无法探测到windows,需要手动添加windows启动项</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70beecb78.png" alt="image-20231203012234078"></p>
+<p><strong>输入红框中的内容，红圈中的内容为刚刚记下来的数字</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span> <span class="comment">//保存后退出</span></span><br><span class="line">    </span><br><span class="line">umount -R /mnt <span class="comment">// /mnt完成了它的使命，把它卸载掉</span></span><br><span class="line">    </span><br><span class="line">reboot <span class="comment">//重启查看能否正常启动Windows</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="进入Arch-Linux美化"><a href="#进入Arch-Linux美化" class="headerlink" title="进入Arch Linux美化"></a>进入Arch Linux美化</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment">//输入密码登录root账户</span></span><br></pre></td></tr></table></figure>
+
+<p>重复之前的联网操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rfkill unblock wifi</span><br><span class="line"></span><br><span class="line">ip link</span><br><span class="line"></span><br><span class="line">ip link set wlan0 up</span><br><span class="line"></span><br><span class="line">iwctl </span><br><span class="line"></span><br><span class="line">station wlan0 scan</span><br><span class="line"></span><br><span class="line">station wlan0 get-networks</span><br><span class="line"></span><br><span class="line">station wlan0 connect [wifi名字]</span><br><span class="line"></span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">ping baidu.com </span><br></pre></td></tr></table></figure>
+
+<h4 id="安装Gnome桌面"><a href="#安装Gnome桌面" class="headerlink" title="安装Gnome桌面"></a>安装Gnome桌面</h4><blockquote>
+<p>GNOME是一个<strong>自由开源的桌面环境</strong>，是 Linux 操作系统中最常用的桌面环境之一。 GNOME的目标是为 Linux 系统提供现代、易用的桌面环境，以提高用户的体验和生产力。 它提供了一个用户友好的界面和许多常用的应用程序，如文件管理器、文本编辑器、终端、图形 图像处理 程序</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S gnome gnome-tweaks <span class="comment">//然后一路回车</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="安装相应的显卡驱动"><a href="#安装相应的显卡驱动" class="headerlink" title="安装相应的显卡驱动"></a>安装相应的显卡驱动</h4><p><strong>注意这里只要安装集显驱动而不要安装英伟达驱动，原因是arch linux可能检测不到</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S mesa xf86-video-b</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70c0780b3.png" alt="image-20231203014043573"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable gdm</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>GDM (The GNOME Display Manager)是GNOME显示环境的管理器，并被用来替代原来的X Display Manager</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot </span><br></pre></td></tr></table></figure>
+
+<p>于是就进入gnome桌面了</p>
+<h4 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h4><p>下载fcirx输入法、浏览器等必要软件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S git ntfs-3g wqy-zenhei firefox fcitx5-im fcitx5-chinese-addons</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>&#x2F;etc&#x2F;environment是设置整个系统的环境，而&#x2F;etc&#x2F;profile是设置所有用户的环境，前者与登录用户无关，后者与登录用户有关。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/environment</span><br></pre></td></tr></table></figure>
+
+<p>输入：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GTK_IM_MODULE=fcitx</span><br><span class="line"></span><br><span class="line">QT_IM_MODULE=fcitx</span><br><span class="line"></span><br><span class="line">XMODIFIERS=@im=fcitx</span><br><span class="line"></span><br><span class="line">SDL_IM_MODULE=fcitx</span><br><span class="line"></span><br><span class="line">GLFW_IM_MODULE=ibus</span><br></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70c17dd35.png" alt="image-20231203014725348" style="zoom: 200%;" />
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>设置中文输入法</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source\_posts\安装Arch-Linux的记录.assets\656b70c28133b.png" alt="image-20231203015046687" style="zoom:200%;" />
+
+<p>注意这个输入法是用<em><strong>ctrl+空格</strong></em>启用的</p>
+<h4 id="设置蓝牙连接"><a href="#设置蓝牙连接" class="headerlink" title="设置蓝牙连接"></a>设置蓝牙连接</h4><p>安装蓝牙模块并启动蓝牙服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S bluez bluez-utils</span><br><span class="line">sudo systemctl enable bluetooth.service</span><br><span class="line">sudo systemctl start bluetooth.service</span><br></pre></td></tr></table></figure>
+
+<p>Bluez是Linux系统上的蓝牙协议栈，自带了很多有用的工具，Bluetoothctl就是其一</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bluetoothctl --help          查看帮助命令</span><br><span class="line">bluetoothctl -v              查看蓝牙版本</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bluetoothctl            进入蓝牙管理工具环境</span><br><span class="line">[bluetooth]# power on                打开蓝牙</span><br><span class="line">[bluetooth]# agent on                开启代理</span><br><span class="line">[bluetooth]# scan on                 扫描蓝牙设备</span><br><span class="line">[bluetooth]# pair xx:xx:xx:...       配对该设备</span><br><span class="line">[bluetooth]# trust xx:xx:xx:...      信任该设备</span><br><span class="line">[bluetooth]# connect xx:xx:...       连接该设备</span><br><span class="line">[bluetooth]# disconnect xx:xx:...    断开蓝牙</span><br></pre></td></tr></table></figure>
+
+<p>安装蓝牙音频</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S pulseaudio-bluetooth</span><br></pre></td></tr></table></figure>
+
+<p>蓝牙图形化管理工具安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S bluedevil</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S blueman</span><br></pre></td></tr></table></figure>
+
+<h4 id="完结撒花🌸"><a href="#完结撒花🌸" class="headerlink" title="完结撒花🌸"></a>完结撒花🌸</h4><h2 id="Linux-系统结构"><a href="#Linux-系统结构" class="headerlink" title="Linux 系统结构"></a>Linux 系统结构</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="G:\hexo-blog\source_posts\安装Arch-Linux的记录.assets\656b70c37eec5.png"></p>
+<blockquote>
+<ul>
+<li><p><strong>&#x2F;bin</strong>：<br>bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</p>
+</li>
+<li><p><strong>&#x2F;boot：</strong><br>这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
+</li>
+<li><p><strong>&#x2F;dev ：</strong><br>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
+</li>
+<li><p><strong>&#x2F;etc：</strong><br>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
+</li>
+<li><p><strong>&#x2F;home</strong>：<br>用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p>
+</li>
+<li><p><strong>&#x2F;lib</strong>：<br>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
+</li>
+<li><p><strong>&#x2F;lost+found</strong>：<br>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
+</li>
+<li><p><strong>&#x2F;media</strong>：<br>linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
+</li>
+<li><p><strong>&#x2F;mnt</strong>：<br>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</p>
+</li>
+<li><p><strong>&#x2F;opt</strong>：<br>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
+</li>
+<li><p><strong>&#x2F;proc</strong>：<br>proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>&#x2F;root</strong>：<br>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
+</li>
+<li><p><strong>&#x2F;sbin</strong>：<br>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
+</li>
+<li><p><strong>&#x2F;selinux</strong>：<br> 这个目录是 Redhat&#x2F;CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
+</li>
+<li><p><strong>&#x2F;srv</strong>：<br> 该目录存放一些服务启动之后需要提取的数据。</p>
+</li>
+<li><p><strong>&#x2F;sys</strong>：</p>
+<p>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
+<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
+<p>该文件系统是内核设备树的一个直观反映。</p>
+<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
+</li>
+<li><p><strong>&#x2F;tmp</strong>：<br>tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
+</li>
+<li><p><strong>&#x2F;usr</strong>：<br> usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;bin：</strong><br>系统用户使用的应用程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;sbin：</strong><br>超级用户使用的比较高级的管理程序和系统守护程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;src：</strong><br>内核源代码默认的放置目录。</p>
+</li>
+<li><p><strong>&#x2F;var</strong>：<br>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
+</li>
+<li><p><strong>&#x2F;run</strong>：<br>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 &#x2F;var&#x2F;run 目录，应该让它指向 run。</p>
+</li>
+</ul>
+<p>在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</p>
+<p><strong>&#x2F;etc</strong>： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
+<p><strong>&#x2F;bin, &#x2F;sbin, &#x2F;usr&#x2F;bin, &#x2F;usr&#x2F;sbin</strong>: 这是系统预设的执行文件的放置目录，比如 <strong>ls</strong> 就是在 <strong>&#x2F;bin&#x2F;ls</strong> 目录下的。</p>
+<p>值得提出的是 <strong>&#x2F;bin</strong>、**&#x2F;usr&#x2F;bin** 是给系统用户使用的指令（除 root 外的通用用户），而&#x2F;sbin, &#x2F;usr&#x2F;sbin 则是给 root 使用的指令。</p>
+<p><strong>&#x2F;var</strong>： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在 &#x2F;var&#x2F;log 目录下，另外 mail 的预设放置也是在这里。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p>本文参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/luotuo28/article/details/125000308">ip link 命令总结-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.linuxcool.com/">Linux命令大全(手册) – 真正好用的Linux命令在线查询网站 (linuxcool.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/544554354">linux中ctl代表什么缩写？很多命令都带结尾ctl，另外ifconfig和nmcli有什么区别？ - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/596227524">Arch Linux 详细安装教程，萌新再也不怕了！「2023.10」 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XY4y1f77S/?spm_id_from=333.337.search-card.all.click">【超简单】Windows+Arch Linux双系统双磁盘方案，全程不废话_哔哩哔哩_bilibili</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tonglin12138/article/details/87706009">Linux—带你区分”根目录” 和 “家目录”_根目录、家目录的路径分别是什么?可以用什么符号表示,用来快速访问?-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_61683908/article/details/129430286">https://blog.csdn.net/qq_61683908/article/details/129430286</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_35443436/article/details/116649342">linux下的mnt文件夹用来干嘛,Linux&#x2F;mnt目录主要用于什么？_Killer Seven的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/">ArchWiki (archlinux.org)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/492509251">Linux 黑话解释：Linux 中的 GRUB 是什么？ | Linux 中国 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/techpedia/2001">什么是GNOME_GNOME简介_GNOME的优势以及应用场景-腾讯云开发者社区 (tencent.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/x_wukong/p/4771316.html">etc&#x2F;profile和&#x2F;etc&#x2F;environment的比较 - 明明是悟空 - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36390239/article/details/123118489">ArchLinux安装使用蓝牙之基础_archlinux 蓝牙_kler的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-system-contents.html">Linux 系统目录结构 | 菜鸟教程 (runoob.com)</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://foreon.github.io">Leon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://foreon.github.io/posts/54882.html">https://foreon.github.io/posts/54882.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://foreon.github.io" target="_blank">Leon's blog😽</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/12/03/656b72718aa0a.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/16427.html" title="CNSS Recruit 2023 Writeup"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/11/03/65451815e32d3.jpg" onerror="onerror=null;src='https://bu.dusays.com/2023/11/03/65450afb66c4f.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CNSS Recruit 2023 Writeup</div></div></a></div><div class="next-post pull-right"><a href="/posts/36124.html" title="YuLin 2023 Recruit Writeup"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/11/03/6545181570d8a.jpg" onerror="onerror=null;src='https://bu.dusays.com/2023/11/03/65450afb66c4f.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">YuLin 2023 Recruit Writeup</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/11/03/6545103c2e116.jpg" onerror="this.onerror=null;this.src='https://bu.dusays.com/2023/11/03/65450afd63db3.gif'" alt="avatar"/></div><div class="author-info__name">Leon</div><div class="author-info__description">想爱想吃想变成天上忽明忽暗的云</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Foreon"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Foreon" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今日无事</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Arch-Linux%E7%9A%84%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">安装Arch Linux的记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">安装过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="toc-number">1.1.2.</span> <span class="toc-text">设置网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="toc-number">1.1.3.</span> <span class="toc-text">设置时间同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4"><span class="toc-number">1.1.4.</span> <span class="toc-text">分配磁盘空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">1.1.5.</span> <span class="toc-text">分区格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA"><span class="toc-number">1.1.6.</span> <span class="toc-text">挂载分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E8%BD%AF%E4%BB%B6%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-number">1.1.7.</span> <span class="toc-text">选择软件镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E5%8C%85"><span class="toc-number">1.1.8.</span> <span class="toc-text">安装基础包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8chroot"><span class="toc-number">1.1.9.</span> <span class="toc-text">使用chroot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA"><span class="toc-number">1.1.10.</span> <span class="toc-text">设置时区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%96"><span class="toc-number">1.1.11.</span> <span class="toc-text">本地化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E7%B3%BB%E7%BB%9F%E5%90%8D%E5%92%8C%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.12.</span> <span class="toc-text">确定系统名和网络管理系统配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEroot%E5%AF%86%E7%A0%81"><span class="toc-number">1.1.13.</span> <span class="toc-text">设置root密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7"><span class="toc-number">1.1.14.</span> <span class="toc-text">新建普通用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Grub%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.15.</span> <span class="toc-text">Grub安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GRUB-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">GRUB 是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0Windows%E5%90%AF%E5%8A%A8%E9%A1%B9"><span class="toc-number">1.2.1.</span> <span class="toc-text">手动添加Windows启动项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5Arch-Linux%E7%BE%8E%E5%8C%96"><span class="toc-number">1.2.2.</span> <span class="toc-text">进入Arch Linux美化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Gnome%E6%A1%8C%E9%9D%A2"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">安装Gnome桌面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%9B%B8%E5%BA%94%E7%9A%84%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">安装相应的显卡驱动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">下载软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%93%9D%E7%89%99%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">设置蓝牙连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%8C%E7%BB%93%E6%92%92%E8%8A%B1%F0%9F%8C%B8"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">完结撒花🌸</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">Linux 系统结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/16427.html" title="CNSS Recruit 2023 Writeup"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/11/03/65451815e32d3.jpg" onerror="this.onerror=null;this.src='https://bu.dusays.com/2023/11/03/65450afb66c4f.jpg'" alt="CNSS Recruit 2023 Writeup"/></a><div class="content"><a class="title" href="/posts/16427.html" title="CNSS Recruit 2023 Writeup">CNSS Recruit 2023 Writeup</a><time datetime="2023-12-02T18:08:56.000Z" title="发表于 2023-12-03 02:08:56">2023-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/54882.html" title="安装Arch Linux的记录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/12/03/656b72718aa0a.jpg" onerror="this.onerror=null;this.src='https://bu.dusays.com/2023/11/03/65450afb66c4f.jpg'" alt="安装Arch Linux的记录"/></a><div class="content"><a class="title" href="/posts/54882.html" title="安装Arch Linux的记录">安装Arch Linux的记录</a><time datetime="2023-12-02T18:03:57.000Z" title="发表于 2023-12-03 02:03:57">2023-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/36124.html" title="YuLin 2023 Recruit Writeup"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/11/03/6545181570d8a.jpg" onerror="this.onerror=null;this.src='https://bu.dusays.com/2023/11/03/65450afb66c4f.jpg'" alt="YuLin 2023 Recruit Writeup"/></a><div class="content"><a class="title" href="/posts/36124.html" title="YuLin 2023 Recruit Writeup">YuLin 2023 Recruit Writeup</a><time datetime="2023-11-03T15:56:39.000Z" title="发表于 2023-11-03 23:56:39">2023-11-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/51727.html" title="我的第一篇博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2023/11/03/65450af808b47.jpg" onerror="this.onerror=null;this.src='https://bu.dusays.com/2023/11/03/65450afb66c4f.jpg'" alt="我的第一篇博客"/></a><div class="content"><a class="title" href="/posts/51727.html" title="我的第一篇博客">我的第一篇博客</a><time datetime="2023-11-02T12:15:27.000Z" title="发表于 2023-11-02 20:15:27">2023-11-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Leon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="web,re,pwn,crypto,design" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
