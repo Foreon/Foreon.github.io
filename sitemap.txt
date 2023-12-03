@@ -1,6 +1,6 @@
-https://foreon.github.io/posts/36124.html
 https://foreon.github.io/posts/54882.html
 https://foreon.github.io/posts/16427.html
+https://foreon.github.io/posts/36124.html
 https://foreon.github.io/posts/51727.html
 https://foreon.github.io/music/index.html
 https://foreon.github.io/movies/index.html
@@ -20,4 +20,4 @@ https://foreon.github.io/tags/ctf/
 https://foreon.github.io/tags/linux/
 https://foreon.github.io/categories/%E9%9A%8F%E7%AC%94/
 https://foreon.github.io/categories/writeup/
-https://foreon.github.io/categories/Learningr-ecord/
+https://foreon.github.io/categories/Learningr-record/
