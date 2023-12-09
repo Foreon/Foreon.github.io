@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>信息安全数学基础归纳</title>
+      <link href="/posts/43666.html"/>
+      <url>/posts/43666.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>期末在即，为了复习同时也为下学期的密码学打下基础，我把<em><strong>信息安全数学基础</strong></em>这门课归纳了一下，以供复习参考和记录。</p><p><strong>多图预警！！！！</strong></p><blockquote><p>所有内容来自许春香老师编著的《信息安全基础教程》</p></blockquote><h1 id="第一章-整除和同余"><a href="#第一章-整除和同余" class="headerlink" title="第一章 整除和同余"></a>第一章 整除和同余</h1><p><img src="https://bu.dusays.com/2023/12/10/65749eae0acf0.jpg" alt="eca3e725126f111951dada109f20af5"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eb04c703.jpg" alt="0aa158a003aa390db9cacbe37d82abf"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eb24328e.jpg" alt="98bda2d6fe1cc993d01481a79607f28"></p><h1 id="第二章-群"><a href="#第二章-群" class="headerlink" title="第二章 群"></a>第二章 群</h1><p><img src="https://bu.dusays.com/2023/12/10/65749eb455322.jpg" alt="4292e5b00aa3fb4e6465da40118203c"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eb633230.jpg" alt="b8874d39a9453e7b4bb0caecc9ef7a0"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eb85d82b.jpg" alt="8a1ba19e9801c07fd9197ecdf7d8d34"></p><h1 id="第三章-循环群与群的结构"><a href="#第三章-循环群与群的结构" class="headerlink" title="第三章 循环群与群的结构"></a>第三章 循环群与群的结构</h1><p><img src="https://bu.dusays.com/2023/12/10/65749eba94951.jpg" alt="f712df4f915e2fdfd1b69bc22cedbe6"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ebccd242.jpg" alt="0b5d1f2482232baa07fa0bb73bb4037"></p><p>群中元素的个数为群的阶，和元素的阶的概念不同，注意区分</p><p>要掌握<strong>“阶为素数的群一定为循环群”</strong>的证明</p><p><img src="https://bu.dusays.com/2023/12/10/65749ebec54be.jpg" alt="847db9e944d94e9fb185bc0bb85fd97"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ec0ab141.jpg" alt="829ea0d52331d6752b35a767d6ba908"></p><h1 id="第四章-环"><a href="#第四章-环" class="headerlink" title="第四章 环"></a>第四章 环</h1><p><img src="https://bu.dusays.com/2023/12/10/65749ec262537.jpg" alt="4c426667eaf531baf3ee2d07563d145"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ec496b1c.jpg" alt="7c74a00fdb7a33194727929e1103211"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ec6c1f2c.jpg" alt="54446ffa4d4a0f5f403edc203bd8fbe"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ec8bf9b3.jpg" alt="026aaad9d88a80abedf4ccaf01e2dda"></p><h1 id="第六章-同余式"><a href="#第六章-同余式" class="headerlink" title="第六章 同余式"></a>第六章 同余式</h1><p><img src="https://bu.dusays.com/2023/12/10/65749ecad750b.jpg" alt="bca7655cdd415d6b612158a5fe8f6c5"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eccd6d69.jpg" alt="3a8ed323951511e4c147f730dd42ce8"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ece8fcf4.jpg" alt="9f1795a715b86032acc960d8dfd6f03"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ed03b82d.jpg" alt="952ca9f21cefdebf1bf2920a9441a65"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ed1e00c1.jpg" alt="72404bbeb7020438e47bda9d42c76c1"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ed3b9c58.jpg" alt="6f698562d1a7d8005a2cf68ca2f6519"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ed5b398b.jpg" alt="b8a58a2f17ad066f9c1692100e9c74d"></p><h2 id="RSA-算法"><a href="#RSA-算法" class="headerlink" title="RSA 算法"></a>RSA 算法</h2><p>或许会考。。。。</p><p>掌握解密正确性的证明</p><p><img src="https://bu.dusays.com/2023/12/10/65749ed79178f.png" alt="image-20231207235352127"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ed8ea257.png" alt="image-20231207235429687"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eda10346.png" alt="image-20231207235444936"></p><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>看下这一题，巧用费马定理</p><p><img src="https://bu.dusays.com/2023/12/10/65749edb1e35b.png" alt="image-20231210005528289"></p><p><img src="https://bu.dusays.com/2023/12/10/65749edc679c0.png" alt="image-20231210005540881"></p><h1 id="第七章-平方剩余"><a href="#第七章-平方剩余" class="headerlink" title="第七章 平方剩余"></a>第七章 平方剩余</h1><p><img src="https://bu.dusays.com/2023/12/10/65749ede2e6ad.jpg" alt="3802555b0e8eb15ecae32f91f147e6e"></p><p><img src="https://bu.dusays.com/2023/12/10/65749edfad42c.jpg" alt="fe26da913cad7fdbf4b3d236f9c4ae3"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ee1458bb.jpg" alt="09fec03cc3dc93df078c079f1b0ddf1"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ee28b4ec.jpg" alt="7da706a91c817a4cb434f7b9bfb94be"></p><h1 id="第八章-原根和离散对数"><a href="#第八章-原根和离散对数" class="headerlink" title="第八章 原根和离散对数"></a>第八章 原根和离散对数</h1><p><img src="https://bu.dusays.com/2023/12/10/65749ee452037.jpg" alt="cb1987514be53640fc840ffc1a70a72"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ee6416c7.jpg" alt="638a5825a77a45baf93806bc2b032c5"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ee7e4830.jpg" alt="f6b87c4f4af1c5cef40eb6a5bf31fbc"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ee99274a.jpg" alt="936b1488fdd34505d241b09643776fe"></p><h2 id="Rabin密码体制和-ElGamal密码体制"><a href="#Rabin密码体制和-ElGamal密码体制" class="headerlink" title="Rabin密码体制和 ElGamal密码体制"></a><strong>Rabin</strong>密码体制和 <strong>ElGamal</strong>密码体制</h2><p>或许会考？？？还是了解即可吧</p><p><img src="https://bu.dusays.com/2023/12/10/65749eeabac8b.png" alt="image-20231210010157620"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eebd2e5b.png" alt="image-20231210010207631"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eed091ae.png" alt="image-20231210010221340"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eee10220.png" alt="image-20231210010232596"></p><p><img src="https://bu.dusays.com/2023/12/10/65749eef3ca7a.png" alt="image-20231210010243291"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef047994.png" alt="image-20231210010256851"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef167816.png" alt="image-20231210010319277"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef295941.png" alt="image-20231210010329384"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef3a500e.png" alt="image-20231210010340302"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef4c3ddb.png" alt="image-20231210010351022"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef5bd9b6.png" alt="image-20231210010404302"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef6efa30.png" alt="image-20231210010413798"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef8418f4.png" alt="image-20231210010427125"></p><p><img src="https://bu.dusays.com/2023/12/10/65749ef94908a.png" alt="image-20231210010435747"></p><p><img src="https://bu.dusays.com/2023/12/10/65749efae18b3.png" alt="image-20231210010449701"></p><p><img src="https://bu.dusays.com/2023/12/10/65749efc48d84.png" alt="image-20231210010500312"></p><p><img src="https://bu.dusays.com/2023/12/10/65749efd7770a.png" alt="image-20231210010511134"></p><p><img src="https://bu.dusays.com/2023/12/10/65749efeb8791.png" alt="image-20231210010520827"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 专业课学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 大学课程学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CNSS Recruit 2023 Writeup</title>
       <link href="/posts/16427.html"/>
       <url>/posts/16427.html</url>
@@ -38,7 +63,7 @@
       
       <categories>
           
-          <category> Learningr record </category>
+          <category> Learning record </category>
           
       </categories>
       
